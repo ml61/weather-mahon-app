@@ -7,10 +7,10 @@ function Menu() {
   return (
     <div>
       <nav>
-        <ul>
+        <ul className="d-flex p-2 bd-highlight justify-content-around list-unstyled">
           <li>
             <Link to="/">
-              <Button variant="contained" color="primary">
+              <Button variant="outlined" color="primary">
                 {" "}
                 Home
               </Button>
@@ -18,7 +18,7 @@ function Menu() {
           </li>
           <li>
             <Link to="/mycities">
-              <Button variant="contained" color="primary">
+              <Button variant="outlined" color="primary">
                 {" "}
                 My Cities
               </Button>
@@ -26,7 +26,7 @@ function Menu() {
           </li>
           <li>
             <Link to="/mynotes">
-              <Button variant="contained" color="primary">
+              <Button variant="outlined" color="primary">
                 {" "}
                 My Notes
               </Button>
