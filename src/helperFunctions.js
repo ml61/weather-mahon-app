@@ -5,8 +5,16 @@ export const parentCity = (data) => {
   } else cityObj = data;
 
   return cityObj.ParentCity
-    ? { id: cityObj.ParentCity.Key, name: cityObj.ParentCity.EnglishName }
-    : { id: cityObj.Key, name: cityObj.EnglishName };
+    ? {
+        id: cityObj.ParentCity.Key,
+        name: cityObj.ParentCity.EnglishName,
+        country: cityObj.Country.EnglishName,
+      }
+    : {
+        id: cityObj.Key,
+        name: cityObj.EnglishName,
+        country: cityObj.Country.EnglishName,
+      };
 };
 
 export const makeFiveDateOptions = () => {
@@ -32,23 +40,31 @@ export const formatDate = (date) => {
 
 export const formatForecastReponse = (data) => {
   const formattedForecast = data.map((data) => {
-    const { Date: dateBeforeFormatting, DegreeDaySummary, Day: day } = data;
+    const {
+      Date: dateBeforeFormatting,
+      Temperature: temperature,
+      Day: day,
+    } = data;
     const {
       CloudCover: cloudCover,
-      Icon: icon,
       LongPhrase: description,
       Wind: wind,
+      IconPhrase: iconPhrase,
     } = day;
+    const icon = formatIcon(day.Icon);
+
     const { Localized: windDirection } = wind.Direction;
     const { Value: windSpeed } = wind.Speed;
-    const { Value: minTemperature } = DegreeDaySummary.Cooling;
-    const { Value: maxTemperature } = DegreeDaySummary.Heating;
+    const { Value: minTemperature } = temperature.Minimum;
+    const { Value: maxTemperature } = temperature.Maximum;
+
     const weatherDate = formatDate(new Date(dateBeforeFormatting));
 
     return {
       weatherDate,
       cloudCover,
       icon,
+      iconPhrase,
       description,
       windDirection,
       windSpeed,
@@ -57,4 +73,9 @@ export const formatForecastReponse = (data) => {
     };
   });
   return formattedForecast;
+};
+
+const formatIcon = (icon) => {
+  icon = "" + icon;
+  return icon.length < 2 ? `0${icon}-s.png` : `${icon}-s.png`;
 };

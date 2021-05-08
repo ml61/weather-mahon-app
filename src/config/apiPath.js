@@ -20,3 +20,6 @@ export const cityIdFromCoords = "/locations/v1/cities/geoposition/search";
 
 export const cityIdFromCityName = "/locations/v1/cities/search";
 export const forecastFiveDaysPath = "/forecasts/v1/daily/5day/";
+
+export const weatherIconPath =
+  "https://apidev.accuweather.com/developers/Media/Default/WeatherIcons/";

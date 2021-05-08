@@ -51,7 +51,6 @@ export const getCityIdFromCityName = (cityName) => async (dispatch) => {
 };
 
 export const getFiveDaysForecast = ({ id }) => async (dispatch) => {
-  console.log(id);
   dispatch({ type: START_LOADING });
   try {
     const response = await api.get(forecastFiveDaysPath + id, {
@@ -64,7 +63,7 @@ export const getFiveDaysForecast = ({ id }) => async (dispatch) => {
     const { DailyForecasts: dailyForecasts } = response.data;
 
     const formattedDailyForecasts = formatForecastReponse(dailyForecasts);
-    console.log(formattedDailyForecasts);
+
     dispatch({
       type: SET_FORECAST,
       payload: formattedDailyForecasts,

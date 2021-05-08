@@ -13,6 +13,7 @@ import { Button } from "@material-ui/core";
 function Home() {
   const currentCity = useSelector((state) => state.currentCity);
   const isLoading = useSelector((state) => state.isLoading);
+  const fiveDaysForecast = useSelector((state) => state.forecast);
 
   const dispatch = useDispatch();
 
@@ -32,13 +33,12 @@ function Home() {
   };
 
   useEffect(() => {
-    window.navigator.geolocation.getCurrentPosition(getCoords, deniedPostion);
-    console.log("build component home");
+    if (!currentCity)
+      window.navigator.geolocation.getCurrentPosition(getCoords, deniedPostion);
   }, []);
 
   useEffect(() => {
     dispatch(getFiveDaysForecast(currentCity));
-    console.log("City was changed");
   }, [currentCity]);
 
   if (isLoading) return <Loading />;
@@ -47,7 +47,7 @@ function Home() {
     <div className="container">
       <Form />
       <div className="mt-4 d-flex flex-column">
-        <WeatherCard currentCity={currentCity} />
+        <WeatherCard />
 
         <div className="mt-4 mb-4 d-flex justify-content-around">
           <Button variant="contained" color="primary">
