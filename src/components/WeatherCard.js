@@ -11,19 +11,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import DateSelector from "./DateSelector";
+import Error from "./Error";
+import Loading from "./Loading";
 import { useDispatch, useSelector } from "react-redux";
 
-function WeatherCard() {
-  const currentCity = useSelector((state) => state.currentCity);
-  const forecast = useSelector((state) => state.forecast);
-  const weatherDate = useSelector((state) => state.weatherDate);
-
-  if (!forecast || !weatherDate) return null;
-
-  const forecastForChosenDate = forecast.find(
-    (data) => data.weatherDate === weatherDate
-  );
-  console.log(forecastForChosenDate);
+function WeatherCard({ forecastForChosenDate, error, isLoading, currentCity }) {
+  if (!forecastForChosenDate) return <Error err={error} />;
 
   const {
     cloudCover,
@@ -36,6 +29,7 @@ function WeatherCard() {
     maxTemperature,
   } = forecastForChosenDate;
 
+  if (error) return <Error err={error} />;
   return (
     <div class="container-fluid">
       <div class="row justify-content-center">

@@ -3,6 +3,7 @@ import { currentPostionReducer } from "./currentPositionReducer";
 import { weatherDateReducer } from "./weatherDateReducer";
 import { isLoading, errorObj } from "./uiReducer";
 import { forecastReducer } from "./forecastReducer";
+import { myCitiesReducer } from "./myCitiesReducer";
 
 export default combineReducers({
   currentCity: currentPostionReducer,
@@ -10,4 +11,5 @@ export default combineReducers({
   isLoading,
   errorObj,
   forecast: forecastReducer,
+  myCities: myCitiesReducer,
 });

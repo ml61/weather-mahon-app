@@ -4,8 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCityIdFromCityName } from "../actions";
 
 function Form() {
-  const weatherDate = useSelector((state) => state.weatherDate);
-
   const [city, setCity] = useState("");
 
   const dispatch = useDispatch();

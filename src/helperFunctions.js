@@ -1,4 +1,4 @@
-export const parentCity = (data) => {
+export const formatCity = (data) => {
   let cityObj;
   if (Array.isArray(data)) {
     cityObj = data[0];
@@ -38,6 +38,10 @@ export const formatDate = (date) => {
   return [day, month, year].join("-");
 };
 
+const formatIcon = (icon) => {
+  icon = "" + icon;
+  return icon.length < 2 ? `0${icon}-s.png` : `${icon}-s.png`;
+};
 export const formatForecastReponse = (data) => {
   const formattedForecast = data.map((data) => {
     const {
@@ -75,7 +79,6 @@ export const formatForecastReponse = (data) => {
   return formattedForecast;
 };
 
-const formatIcon = (icon) => {
-  icon = "" + icon;
-  return icon.length < 2 ? `0${icon}-s.png` : `${icon}-s.png`;
+export const isDisplayedCityIsInMyCities = (displayedCity, myCities) => {
+  return myCities.find((city) => city.id === displayedCity.id) ? true : false;
 };

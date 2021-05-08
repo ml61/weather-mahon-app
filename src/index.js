@@ -12,8 +12,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // convert object to string and store in localStorage
 function saveToLocalStorage(state) {
   try {
-    const { currentCity } = state;
-    const formattedState = { currentCity };
+    const { currentCity, myCities } = state;
+    const formattedState = { currentCity, myCities };
     const serialisedState = JSON.stringify(formattedState);
     localStorage.setItem("persistantState", serialisedState);
   } catch (e) {

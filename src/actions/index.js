@@ -13,7 +13,7 @@ import {
   forecastFiveDaysPath,
 } from "../config/apiPath";
 
-import { parentCity, formatForecastReponse } from "../helperFunctions";
+import { formatCity, formatForecastReponse } from "../helperFunctions";
 
 export const getCityIdFromCoords = (latt, long) => async (dispatch) => {
   dispatch({ type: START_LOADING });
@@ -25,7 +25,7 @@ export const getCityIdFromCoords = (latt, long) => async (dispatch) => {
       },
     });
 
-    const currentCity = parentCity(response.data);
+    const currentCity = formatCity(response.data);
     dispatch({ type: SET_CURRENT_POSITION, payload: currentCity });
     dispatch({ type: SUCCESS_LOADING });
   } catch (err) {
@@ -42,7 +42,13 @@ export const getCityIdFromCityName = (cityName) => async (dispatch) => {
         apikey: API_KEY,
       },
     });
-    const currentCity = parentCity(response.data);
+    if (response.data.length === 0) {
+      console.log("this is from error");
+      const err = new Error();
+      err.message = `We don't have any results for ${cityName}. Please check input and try again`;
+      throw err;
+    }
+    const currentCity = formatCity(response.data);
     dispatch({ type: SET_CURRENT_POSITION, payload: currentCity });
     dispatch({ type: SUCCESS_LOADING });
   } catch (err) {

@@ -8,14 +8,21 @@ import Form from "../components/Form";
 import WeatherCard from "../components/WeatherCard";
 import Loading from "../components/Loading";
 
-import { Button } from "@material-ui/core";
+import ButtonsSection from "../components/ButtonsSection";
 
 function Home() {
   const currentCity = useSelector((state) => state.currentCity);
   const isLoading = useSelector((state) => state.isLoading);
   const fiveDaysForecast = useSelector((state) => state.forecast);
+  const weatherDate = useSelector((state) => state.weatherDate);
+  const error = useSelector((state) => state.errorObj);
+  const myCities = useSelector((state) => state.myCities);
 
   const dispatch = useDispatch();
+
+  const forecastForChosenDate = fiveDaysForecast?.find(
+    (data) => data.weatherDate === weatherDate
+  );
 
   const getCoords = (position) => {
     const { latitude: latt, longitude: long } = position.coords;
@@ -41,24 +48,27 @@ function Home() {
     dispatch(getFiveDaysForecast(currentCity));
   }, [currentCity]);
 
-  if (isLoading) return <Loading />;
-
   return (
     <div className="container">
       <Form />
       <div className="mt-4 d-flex flex-column">
-        <WeatherCard />
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <WeatherCard
+            forecastForChosenDate={forecastForChosenDate}
+            error={error}
+            isLoading={isLoading}
+            currentCity={currentCity}
+          />
+        )}
 
-        <div className="mt-4 mb-4 d-flex justify-content-around">
-          <Button variant="contained" color="primary">
-            {" "}
-            Add City
-          </Button>
-          <Button variant="contained" color="primary">
-            {" "}
-            Add Note
-          </Button>
-        </div>
+        <ButtonsSection
+          currentCity={currentCity}
+          myCities={myCities}
+          error={error}
+          weatherDate={weatherDate}
+        />
       </div>
     </div>
   );
