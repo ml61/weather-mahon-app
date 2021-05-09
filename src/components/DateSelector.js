@@ -31,8 +31,8 @@ function DateSelector() {
         value={date}
         onChange={handleDateChange}
       >
-        {fiveDates.map((date) => (
-          <DateOption date={date} />
+        {fiveDates.map((date, index) => (
+          <DateOption key={index} date={date} />
         ))}
       </select>
     </div>

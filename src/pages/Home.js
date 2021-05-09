@@ -45,6 +45,7 @@ function Home() {
   }, []);
 
   useEffect(() => {
+    if (!currentCity) return;
     dispatch(getFiveDaysForecast(currentCity));
   }, [currentCity]);
 

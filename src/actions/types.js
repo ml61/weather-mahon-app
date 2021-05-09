@@ -7,3 +7,4 @@ export const SET_FORECAST = "SET_FORECAST";
 export const ADD_CITY_TO_MY_CITIES = "ADD_CITY_TO_MY_CITIES";
 export const DELETE_CITY_FROM_MY_CITIES = "DELETE_CITY_FROM_MY_CITIES";
 export const ADD_NOTE = "ADD_NOTE";
+export const DELETE_NOTE = "DELETE_NOTE";

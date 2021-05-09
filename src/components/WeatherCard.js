@@ -31,37 +31,37 @@ function WeatherCard({ forecastForChosenDate, error, isLoading, currentCity }) {
 
   if (error) return <Error err={error} />;
   return (
-    <div class="container-fluid">
-      <div class="row justify-content-center">
-        <div class="col-12 col-md-12 col-sm-12 col-xs-12">
-          <div class="card p-4">
-            <div class="d-flex justify-content-between align-items-center">
+    <div className="container-fluid">
+      <div className="row justify-content-center">
+        <div className="col-12 col-md-12 col-sm-12 col-xs-12">
+          <div className="card p-4">
+            <div className="d-flex justify-content-between align-items-center">
               <h4>{currentCity.name}</h4>
               <DateSelector />
               <h4>{currentCity.country}</h4>
             </div>
-            <div class="d-flex flex-column justify-content-center align-items-center temp mt-5 mb-5">
-              <h1 class="mb-2 font-weight-bold" id="heading">
+            <div className="d-flex flex-column justify-content-center align-items-center temp mt-5 mb-5">
+              <h1 className="mb-2 font-weight-bold" id="heading">
                 <FontAwesomeIcon icon={faTemperatureLow} />{" "}
                 <span className="mx-3"> {minTemperature}° C</span>{" "}
               </h1>{" "}
-              <h1 class="mb-0 font-weight-bold" id="heading">
+              <h1 className="mb-0 font-weight-bold" id="heading">
                 <FontAwesomeIcon icon={faTemperatureHigh} />{" "}
                 <span className="mx-3"> {maxTemperature}° C</span>{" "}
               </h1>{" "}
-              <span class="small grey mt-1">{description}</span>
+              <span className="small grey mt-1">{description}</span>
             </div>
-            <div class="d-flex">
-              <div class="temp-details flex-grow-1">
-                <p class="my-1">
+            <div className="d-flex">
+              <div className="temp-details flex-grow-1">
+                <p className="my-1">
                   <FontAwesomeIcon icon={faWind} size="lg" />
                   <span className="mx-1"> {windSpeed} km/h </span>
                 </p>
-                <p class="my-1">
+                <p className="my-1">
                   <FontAwesomeIcon icon={faCompass} size="lg" />
                   <span className="mx-1"> {windDirection} </span>
                 </p>
-                <p class="my-1">
+                <p className="my-1">
                   <FontAwesomeIcon icon={faCloud} size="lg" />
                   <span className="mx-1"> {cloudCover}% </span>
                 </p>

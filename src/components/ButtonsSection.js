@@ -5,40 +5,14 @@ import {
   ADD_CITY_TO_MY_CITIES,
   DELETE_CITY_FROM_MY_CITIES,
 } from "../actions/types";
+import { addCity } from "../actions/index";
 import { useDispatch } from "react-redux";
-import Modal from "react-bootstrap/Modal";
+
+import AddNoteModalForm from "./AddNoteModalForm";
 
 function ButtonsSection({ currentCity, myCities, error, weatherDate }) {
   const [modalShow, setModalShow] = useState(false);
   const dispatch = useDispatch();
-
-  function MyVerticallyCenteredModal(props) {
-    return (
-      <Modal
-        {...props}
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Modal heading
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <h4>Centered Modal</h4>
-          <p>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-            ac consectetur ac, vestibulum at eros.
-          </p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
-        </Modal.Footer>
-      </Modal>
-    );
-  }
 
   if (error) return null;
 
@@ -53,10 +27,7 @@ function ButtonsSection({ currentCity, myCities, error, weatherDate }) {
                 type: DELETE_CITY_FROM_MY_CITIES,
                 payload: currentCity,
               })
-            : dispatch({
-                type: ADD_CITY_TO_MY_CITIES,
-                payload: currentCity,
-              });
+            : dispatch(addCity(currentCity));
         }}
       >
         {isDisplayedCityIsInMyCities(currentCity, myCities)
@@ -68,12 +39,9 @@ function ButtonsSection({ currentCity, myCities, error, weatherDate }) {
         color="primary"
         onClick={() => setModalShow(true)}
       >
-        <MyVerticallyCenteredModal
-          show={modalShow}
-          onHide={() => setModalShow(false)}
-        />
         Add Note
       </Button>
+      <AddNoteModalForm show={modalShow} onHide={() => setModalShow(false)} />
     </div>
   );
 }

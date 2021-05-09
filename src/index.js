@@ -6,14 +6,14 @@ import { createStore, applyMiddleware, compose } from "redux";
 import reduxThunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from "./reducers";
-
+import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // convert object to string and store in localStorage
 function saveToLocalStorage(state) {
   try {
-    const { currentCity, myCities } = state;
-    const formattedState = { currentCity, myCities };
+    const { currentCity, myCities, myNotes } = state;
+    const formattedState = { currentCity, myCities, myNotes };
     const serialisedState = JSON.stringify(formattedState);
     localStorage.setItem("persistantState", serialisedState);
   } catch (e) {

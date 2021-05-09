@@ -4,6 +4,7 @@ import { weatherDateReducer } from "./weatherDateReducer";
 import { isLoading, errorObj } from "./uiReducer";
 import { forecastReducer } from "./forecastReducer";
 import { myCitiesReducer } from "./myCitiesReducer";
+import { notesReducer } from "./notesReducer";
 
 export default combineReducers({
   currentCity: currentPostionReducer,
@@ -12,4 +13,5 @@ export default combineReducers({
   errorObj,
   forecast: forecastReducer,
   myCities: myCitiesReducer,
+  myNotes: notesReducer,
 });
