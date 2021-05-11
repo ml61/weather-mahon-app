@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/weather-mahon-app/static/css/main.2ccddff9.chunk.css",
+    "main.js": "/weather-mahon-app/static/js/main.c7213a31.chunk.js",
+    "main.js.map": "/weather-mahon-app/static/js/main.c7213a31.chunk.js.map",
+    "runtime-main.js": "/weather-mahon-app/static/js/runtime-main.b0962a2b.js",
+    "runtime-main.js.map": "/weather-mahon-app/static/js/runtime-main.b0962a2b.js.map",
+    "static/css/2.4c97ca4f.chunk.css": "/weather-mahon-app/static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.75ddb5c2.chunk.js": "/weather-mahon-app/static/js/2.75ddb5c2.chunk.js",
+    "static/js/2.75ddb5c2.chunk.js.map": "/weather-mahon-app/static/js/2.75ddb5c2.chunk.js.map",
+    "index.html": "/weather-mahon-app/index.html",
+    "static/css/2.4c97ca4f.chunk.css.map": "/weather-mahon-app/static/css/2.4c97ca4f.chunk.css.map",
+    "static/css/main.2ccddff9.chunk.css.map": "/weather-mahon-app/static/css/main.2ccddff9.chunk.css.map",
+    "static/js/2.75ddb5c2.chunk.js.LICENSE.txt": "/weather-mahon-app/static/js/2.75ddb5c2.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b0962a2b.js",
+    "static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.75ddb5c2.chunk.js",
+    "static/css/main.2ccddff9.chunk.css",
+    "static/js/main.c7213a31.chunk.js"
+  ]
+}
