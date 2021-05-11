@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { getFiveDaysForecast, getCityIdFromCityName } from "../actions";
 import { weatherIconPath } from "../config/apiPath";
 import {
   faCompass,
@@ -12,8 +11,6 @@ import {
 
 import DateSelector from "./DateSelector";
 import Error from "./Error";
-import Loading from "./Loading";
-import { useDispatch, useSelector } from "react-redux";
 
 function WeatherCard({ forecastForChosenDate, error, isLoading, currentCity }) {
   if (!forecastForChosenDate) return <Error err={error} />;

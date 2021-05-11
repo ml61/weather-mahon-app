@@ -1,17 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Button } from "@material-ui/core";
 import WeatherCard from "./WeatherCard";
 import Error from "../components/Error";
-import { useDispatch, useSelector } from "react-redux";
-import { getFiveDaysForecast, getCityIdFromCityName } from "../actions";
+import { useSelector } from "react-redux";
 
 function WeatherLayout({ currentCity }) {
-  const dispatch = useDispatch();
   const error = useSelector((state) => state.errorObj);
-
-  // useEffect(() => {
-  //   dispatch(getFiveDaysForecast(currentCity));
-  // }, []);
 
   if (error) return <Error err={error} />;
 

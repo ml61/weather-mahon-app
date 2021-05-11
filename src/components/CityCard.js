@@ -5,25 +5,6 @@ import { useHistory } from "react-router";
 import { SET_CURRENT_POSITION } from "../actions/types";
 import { useDispatch } from "react-redux";
 
-// / City card JSX snippet
-// <div className="comparison-card-image"
-// style={{ backgroundImage: `url(${city.image})` }}
-// >
-// <img src={city.image} />
-// </div>
-// /* CSS snippet */
-// .comparison-card-image {
-// width: 240px;
-// height: 130px;
-// background-position: center center;
-// background-repeat: no-repeat;
-// background-size: cover;
-// overflow: hidden;
-// }
-// .comparison-card-image img {
-// opacity: 0;
-// }
-
 function CityCard({ imageUrl, name, country, id }) {
   const history = useHistory();
   const dispatch = useDispatch();

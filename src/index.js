@@ -2,14 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware, compose } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import reduxThunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from "./reducers";
 import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-// convert object to string and store in localStorage
+// convert currentCity, myCities and myNotes to string and store in localStorage
 function saveToLocalStorage(state) {
   try {
     const { currentCity, myCities, myNotes } = state;
@@ -52,7 +52,3 @@ ReactDOM.render(
   </Provider>,
   document.querySelector("#root")
 );
-
-// const store = createStore(rootReducers, loadFromLocalStorage());
-
-// export default store;

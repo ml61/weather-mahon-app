@@ -17,7 +17,7 @@ import {
   PLACES_API_KEY,
 } from "../config/apiPath";
 
-import { placesRootPath, proxyUrl } from "../config/apiPath";
+import { placesRootPath } from "../config/apiPath";
 
 import {
   formatCity,

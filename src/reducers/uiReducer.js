@@ -28,5 +28,3 @@ export const errorObj = (state = null, action) => {
       return state;
   }
 };
-
-// export const isCurrentCityinMyCities = ()

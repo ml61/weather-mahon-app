@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@material-ui/core";
-import { Grid } from "@material-ui/core";
 
 function Menu() {
   return (
@@ -11,7 +10,6 @@ function Menu() {
           <li>
             <Link to="/">
               <Button variant="outlined" color="primary">
-                {" "}
                 Home
               </Button>
             </Link>
@@ -19,7 +17,6 @@ function Menu() {
           <li>
             <Link to="/mycities">
               <Button variant="outlined" color="primary">
-                {" "}
                 My Cities
               </Button>
             </Link>
@@ -27,7 +24,6 @@ function Menu() {
           <li>
             <Link to="/mynotes">
               <Button variant="outlined" color="primary">
-                {" "}
                 My Notes
               </Button>
             </Link>

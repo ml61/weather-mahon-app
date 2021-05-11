@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "@material-ui/core";
 import { isDisplayedCityIsInMyCities } from "../helperFunctions";
-import {
-  ADD_CITY_TO_MY_CITIES,
-  DELETE_CITY_FROM_MY_CITIES,
-} from "../actions/types";
+import { DELETE_CITY_FROM_MY_CITIES } from "../actions/types";
 import { addCity } from "../actions/index";
 import { useDispatch } from "react-redux";
 
