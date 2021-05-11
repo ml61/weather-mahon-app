@@ -1,6 +1,5 @@
 {
   "name": "weather-mahon-app",
-  "homepage": "https://ml61.github.io/weather-mahon-app/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
