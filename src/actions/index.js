@@ -8,7 +8,7 @@ import {
   ADD_CITY_TO_MY_CITIES,
 } from "./types";
 import weatherApi from "../config/weatherApi";
-import { placesApiWithoutProxy } from "../config/placesApi";
+import { placesApiWithoutProxy, placesApiWithProxy } from "../config/placesApi";
 import {
   API_KEY,
   cityIdFromCoords,
@@ -103,7 +103,7 @@ export const addNote = (noteTitle, noteDescription, noteForDate) => {
 
 export const addCity = (currentCity) => async (dispatch) => {
   try {
-    const response = await placesApiWithoutProxy.get(
+    const response = await placesApiWithProxy.get(
       `/findplacefromtext/json?input=${currentCity.name}&key=${PLACES_API_KEY}&inputtype=textquery&fields=name,photos`
     );
     const photoReference =
