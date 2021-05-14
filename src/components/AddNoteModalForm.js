@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Alert from "react-bootstrap/Alert";
 import { Button } from "@material-ui/core";
@@ -11,6 +11,12 @@ function AddNoteModalForm(props) {
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
 
   const weatherDate = useSelector((state) => state.weatherDate);
+
+  const timerId = useRef(null);
+
+  useEffect(() => {
+    return () => clearTimeout(timerId.current);
+  }, []);
 
   const dispatch = useDispatch();
 
@@ -25,7 +31,7 @@ function AddNoteModalForm(props) {
     e.preventDefault();
     setShowSuccessAlert(true);
     dispatch(addNote(noteTitle, noteDescription, weatherDate));
-    setTimeout(() => {
+    timerId.current = setTimeout(() => {
       props.onHide();
       setShowSuccessAlert(false);
       setNoteTitle("");
@@ -63,19 +69,19 @@ function AddNoteModalForm(props) {
                   id="inputCity"
                   value={noteTitle}
                   onChange={handleNoteTitleChange}
-                  maxlength="20"
+                  maxLength="20"
                   required
                 />
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <label htmlFor="exampleFormControlTextarea1">Description</label>
                 <textarea
-                  class="form-control"
+                  className="form-control"
                   id="exampleFormControlTextarea1"
                   rows="3"
                   value={noteDescription}
                   onChange={handleNoteDescriptionChange}
-                  maxlength="100"
+                  maxLength="100"
                 ></textarea>
               </div>
             </>
