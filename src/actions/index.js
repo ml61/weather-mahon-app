@@ -8,7 +8,7 @@ import {
   ADD_CITY_TO_MY_CITIES,
 } from "./types";
 import weatherApi from "../config/weatherApi";
-import { placesApiWithProxy } from "../config/placesApi";
+import { placesApiWithoutProxy } from "../config/placesApi";
 import {
   API_KEY,
   cityIdFromCoords,
@@ -66,29 +66,31 @@ export const getCityIdFromCityName = (cityName) => async (dispatch) => {
   }
 };
 
-export const getFiveDaysForecast = ({ id }) => async (dispatch) => {
-  dispatch({ type: START_LOADING });
-  try {
-    const response = await weatherApi.get(forecastFiveDaysPath + id, {
-      params: {
-        details: true,
-        metric: true,
-        apikey: API_KEY,
-      },
-    });
-    const { DailyForecasts: dailyForecasts } = response.data;
+export const getFiveDaysForecast =
+  ({ id }) =>
+  async (dispatch) => {
+    dispatch({ type: START_LOADING });
+    try {
+      const response = await weatherApi.get(forecastFiveDaysPath + id, {
+        params: {
+          details: true,
+          metric: true,
+          apikey: API_KEY,
+        },
+      });
+      const { DailyForecasts: dailyForecasts } = response.data;
 
-    const formattedDailyForecasts = formatForecastReponse(dailyForecasts);
+      const formattedDailyForecasts = formatForecastReponse(dailyForecasts);
 
-    dispatch({
-      type: SET_FORECAST,
-      payload: formattedDailyForecasts,
-    });
-    dispatch({ type: SUCCESS_LOADING });
-  } catch (err) {
-    dispatch({ type: ERROR_LOADING, payload: err });
-  }
-};
+      dispatch({
+        type: SET_FORECAST,
+        payload: formattedDailyForecasts,
+      });
+      dispatch({ type: SUCCESS_LOADING });
+    } catch (err) {
+      dispatch({ type: ERROR_LOADING, payload: err });
+    }
+  };
 
 export const addNote = (noteTitle, noteDescription, noteForDate) => {
   const id = Date.now();
@@ -101,7 +103,7 @@ export const addNote = (noteTitle, noteDescription, noteForDate) => {
 
 export const addCity = (currentCity) => async (dispatch) => {
   try {
-    const response = await placesApiWithProxy.get(
+    const response = await placesApiWithoutProxy.get(
       `/findplacefromtext/json?input=${currentCity.name}&key=${PLACES_API_KEY}&inputtype=textquery&fields=name,photos`
     );
     const photoReference =
